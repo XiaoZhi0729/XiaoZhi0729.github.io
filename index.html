@@ -544,6 +544,34 @@ section{position:relative}
 [data-theme="dark"] .theme-toggle .icon-moon{ display:none }
 .icon-sun{ display:none }
 .icon-moon{ display:block }
+
+/* === thanks / open source === */
+.thanks{ background:var(--bg) }
+.thanks__grid{ display:grid;gap:16px;grid-template-columns:repeat(3,1fr) }
+.thanks-card{
+  border:1px solid var(--border);border-radius:var(--r-lg);
+  padding:28px 24px;background:var(--bg-alt);
+  transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .35s var(--ease);
+  display:flex;flex-direction:column;
+}
+.thanks-card:hover{ transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:var(--border-strong) }
+.thanks-card__name{ margin:0;font-size:16px;font-weight:600;letter-spacing:-.005em;color:var(--text) }
+.thanks-card__license{ font-size:11px;color:var(--accent);font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin-top:6px;display:inline-block }
+.thanks-card__desc{ margin:10px 0 0;font-size:14px;color:var(--text-2);line-height:1.6 }
+.thanks-card__bottom{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-top:auto;padding-top:14px;border-top:1px solid var(--border);
+}
+.thanks-card__author{ font-size:13px;color:var(--muted) }
+.thanks-card__link{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:13px;color:var(--accent);font-weight:600;
+  transition:color .25s var(--ease),transform .25s var(--ease);
+}
+.thanks-card__link:hover{ color:var(--accent-strong);transform:translateX(3px) }
+.thanks-card__link svg{ width:14px;height:14px }
+@media(max-width:960px){ .thanks__grid{ grid-template-columns:repeat(2,1fr) } }
+@media(max-width:640px){ .thanks__grid{ grid-template-columns:1fr } }
 </style>
 </head>
 <body>
@@ -832,6 +860,129 @@ section{position:relative}
             B 站主页
           </a>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== 开源致谢 ====== -->
+  <section class="section thanks" id="thanks" aria-labelledby="thanks-title">
+    <div class="wrap">
+      <header class="section__head reveal">
+        <span class="eyebrow">Open Source</span>
+        <h2 class="section__title" id="thanks-title">开源致谢</h2>
+        <p class="section__lead">Wallflip 的开发得益于以下开源项目，感谢每一位贡献者。</p>
+      </header>
+      <div class="thanks__grid">
+        <article class="thanks-card reveal">
+          <div>
+            <h3 class="thanks-card__name">MIUIX</h3>
+            <span class="thanks-card__license">Apache-2.0</span>
+            <p class="thanks-card__desc">HyperOS 风格 Compose 组件库</p>
+          </div>
+          <div class="thanks-card__bottom">
+            <span class="thanks-card__author">YuKongA</span>
+            <a class="thanks-card__link" href="https://github.com/YuKongA/Compose-Miuix-UI" target="_blank" rel="noopener noreferrer">GitHub<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg></a>
+          </div>
+        </article>
+        <article class="thanks-card reveal delay-1">
+          <div>
+            <h3 class="thanks-card__name">Jetpack Compose</h3>
+            <span class="thanks-card__license">Apache-2.0</span>
+            <p class="thanks-card__desc">Android 现代声明式 UI 框架</p>
+          </div>
+          <div class="thanks-card__bottom">
+            <span class="thanks-card__author">Google</span>
+            <a class="thanks-card__link" href="https://developer.android.com/jetpack/compose" target="_blank" rel="noopener noreferrer">官网<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg></a>
+          </div>
+        </article>
+        <article class="thanks-card reveal delay-2">
+          <div>
+            <h3 class="thanks-card__name">Room</h3>
+            <span class="thanks-card__license">Apache-2.0</span>
+            <p class="thanks-card__desc">Android 本地数据库持久化框架</p>
+          </div>
+          <div class="thanks-card__bottom">
+            <span class="thanks-card__author">Google</span>
+            <a class="thanks-card__link" href="https://developer.android.com/jetpack/androidx/releases/room" target="_blank" rel="noopener noreferrer">官网<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg></a>
+          </div>
+        </article>
+        <article class="thanks-card reveal">
+          <div>
+            <h3 class="thanks-card__name">WorkManager</h3>
+            <span class="thanks-card__license">Apache-2.0</span>
+            <p class="thanks-card__desc">Android 后台任务调度框架</p>
+          </div>
+          <div class="thanks-card__bottom">
+            <span class="thanks-card__author">Google</span>
+            <a class="thanks-card__link" href="https://developer.android.com/jetpack/androidx/releases/work" target="_blank" rel="noopener noreferrer">官网<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg></a>
+          </div>
+        </article>
+        <article class="thanks-card reveal delay-1">
+          <div>
+            <h3 class="thanks-card__name">Coil</h3>
+            <span class="thanks-card__license">Apache-2.0</span>
+            <p class="thanks-card__desc">Kotlin 协程图片加载库</p>
+          </div>
+          <div class="thanks-card__bottom">
+            <span class="thanks-card__author">Coil Contributors</span>
+            <a class="thanks-card__link" href="https://github.com/coil-kt/coil" target="_blank" rel="noopener noreferrer">GitHub<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg></a>
+          </div>
+        </article>
+        <article class="thanks-card reveal delay-2">
+          <div>
+            <h3 class="thanks-card__name">Haze</h3>
+            <span class="thanks-card__license">Apache-2.0</span>
+            <p class="thanks-card__desc">Compose 毛玻璃模糊效果库</p>
+          </div>
+          <div class="thanks-card__bottom">
+            <span class="thanks-card__author">Chris Banes</span>
+            <a class="thanks-card__link" href="https://github.com/chrisbanes/haze" target="_blank" rel="noopener noreferrer">GitHub<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg></a>
+          </div>
+        </article>
+        <article class="thanks-card reveal">
+          <div>
+            <h3 class="thanks-card__name">Gson</h3>
+            <span class="thanks-card__license">Apache-2.0</span>
+            <p class="thanks-card__desc">Google JSON 序列化/反序列化库</p>
+          </div>
+          <div class="thanks-card__bottom">
+            <span class="thanks-card__author">Google</span>
+            <a class="thanks-card__link" href="https://github.com/google/gson" target="_blank" rel="noopener noreferrer">GitHub<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg></a>
+          </div>
+        </article>
+        <article class="thanks-card reveal delay-1">
+          <div>
+            <h3 class="thanks-card__name">Kotlinx Serialization</h3>
+            <span class="thanks-card__license">Apache-2.0</span>
+            <p class="thanks-card__desc">Kotlin 官方序列化框架</p>
+          </div>
+          <div class="thanks-card__bottom">
+            <span class="thanks-card__author">JetBrains</span>
+            <a class="thanks-card__link" href="https://github.com/Kotlin/kotlinx.serialization" target="_blank" rel="noopener noreferrer">GitHub<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg></a>
+          </div>
+        </article>
+        <article class="thanks-card reveal delay-2">
+          <div>
+            <h3 class="thanks-card__name">Navigation3</h3>
+            <span class="thanks-card__license">Apache-2.0</span>
+            <p class="thanks-card__desc">Compose 导航框架</p>
+          </div>
+          <div class="thanks-card__bottom">
+            <span class="thanks-card__author">JetBrains</span>
+            <a class="thanks-card__link" href="https://github.com/JetBrains/compose-multiplatform" target="_blank" rel="noopener noreferrer">GitHub<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg></a>
+          </div>
+        </article>
+        <article class="thanks-card reveal delay-3">
+          <div>
+            <h3 class="thanks-card__name">Kotlin</h3>
+            <span class="thanks-card__license">Apache-2.0</span>
+            <p class="thanks-card__desc">现代编程语言</p>
+          </div>
+          <div class="thanks-card__bottom">
+            <span class="thanks-card__author">JetBrains</span>
+            <a class="thanks-card__link" href="https://github.com/JetBrains/kotlin" target="_blank" rel="noopener noreferrer">GitHub<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg></a>
+          </div>
+        </article>
       </div>
     </div>
   </section>
