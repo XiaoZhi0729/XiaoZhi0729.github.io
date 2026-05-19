@@ -998,27 +998,42 @@ section{position:relative}
     });
   }
 
-  // ============ 深色模式切换 ============
+  // ============ 深色模式：根据用户当地时间自动切换 ============
   var themeToggle = document.getElementById('themeToggle');
   var root = document.documentElement;
   var metaTheme = document.querySelector('meta[name="theme-color"]');
-  var stored = localStorage.getItem('wf-theme');
-  if(stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme:dark)').matches)){
-    root.setAttribute('data-theme','dark');
-    if(metaTheme) metaTheme.content = '#0c0d11';
+
+  // 白天 6:00-18:00 → 浅色，其余 → 深色
+  function autoThemeByTime(){
+    var h = new Date().getHours();
+    return (h >= 6 && h < 18) ? 'light' : 'dark';
   }
+
+  var stored = localStorage.getItem('wf-theme');
+  var theme;
+  if(stored === 'light' || stored === 'dark'){ theme = stored; }
+  else { theme = autoThemeByTime(); localStorage.setItem('wf-theme','auto'); }
+
+  function applyTheme(t){
+    if(t === 'dark'){ root.setAttribute('data-theme','dark'); if(metaTheme) metaTheme.content = '#0c0d11'; }
+    else { root.removeAttribute('data-theme'); if(metaTheme) metaTheme.content = '#ffffff'; }
+  }
+  applyTheme(theme);
+
+  // 自动模式下每分钟检查，到时间自动切换
+  setInterval(function(){
+    if(localStorage.getItem('wf-theme') === 'auto'){ var auto = autoThemeByTime(); if(auto !== theme){ theme = auto; applyTheme(theme); } }
+  }, 60000);
+
+  // 手动切换：点一次进入手动偏好，点两次（回到与时间一致的模式）恢复自动
   if(themeToggle){
     themeToggle.addEventListener('click', function(){
       var isDark = root.getAttribute('data-theme') === 'dark';
-      if(isDark){
-        root.removeAttribute('data-theme');
-        localStorage.setItem('wf-theme','light');
-        if(metaTheme) metaTheme.content = '#ffffff';
-      } else {
-        root.setAttribute('data-theme','dark');
-        localStorage.setItem('wf-theme','dark');
-        if(metaTheme) metaTheme.content = '#0c0d11';
-      }
+      var newTheme = isDark ? 'light' : 'dark';
+      if(newTheme === autoThemeByTime()){ localStorage.setItem('wf-theme','auto'); }
+      else { localStorage.setItem('wf-theme',newTheme); }
+      theme = newTheme;
+      applyTheme(theme);
     });
   }
 })();
