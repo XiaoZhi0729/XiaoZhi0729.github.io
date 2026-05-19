@@ -32,6 +32,26 @@
   --topbar-h:64px;
   --ease:cubic-bezier(.22,.61,.36,1);
 }
+[data-theme="dark"]{
+  --accent:#4D8AFF;
+  --accent-strong:#2A6BFF;
+  --accent-soft:rgba(77,138,255,.14);
+  --accent-line:rgba(77,138,255,.40);
+  --bg:#0c0d11;
+  --bg-alt:#1a1c24;
+  --bg-soft:#131520;
+  --text:#eef0f4;
+  --text-2:#9ca3ae;
+  --muted:#6e7681;
+  --border:#2c3038;
+  --border-strong:#3a3f4c;
+  --ink:#eef0f4;
+  --on-ink:#0c0d11;
+  --shadow-sm:0 2px 8px rgba(0,0,0,.16);
+  --shadow-md:0 8px 24px rgba(0,0,0,.28);
+  --shadow-lg:0 24px 60px rgba(0,0,0,.42);
+  color-scheme:dark;
+}
 *,*::before,*::after{box-sizing:border-box}
 html,body{margin:0;padding:0}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
@@ -495,6 +515,36 @@ section{position:relative}
   .phone-shot{ max-width:240px }
   .shot-rows{ gap:64px }
 }
+
+/* === dark mode overrides === */
+[data-theme="dark"] .topbar{ background:rgba(12,13,17,.72);border-bottom-color:rgba(255,255,255,.06) }
+[data-theme="dark"] .hero__bgword{ color:rgba(238,240,244,.04) }
+[data-theme="dark"] .is-ink .hero__sub{ color:rgba(12,13,17,.78) }
+[data-theme="dark"] .is-ink .hero__en{ color:rgba(12,13,17,.55) }
+[data-theme="dark"] .pain__item,
+[data-theme="dark"] .f-card,
+[data-theme="dark"] .dl-btn,
+[data-theme="dark"] .author__card{ background:#1a1c24 }
+[data-theme="dark"] .dl{ background:#0c0d11 }
+[data-theme="dark"] .dl__panel{ background:linear-gradient(180deg,#1a1c24 0%,#131520 100%) }
+@media(max-width:640px){
+  [data-theme="dark"] .topbar{ background:rgba(12,13,17,.86) }
+}
+
+/* === theme toggle === */
+.theme-toggle{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:36px;height:36px;
+  border-radius:999px;
+  color:var(--text-2);
+  transition:color .25s var(--ease),background-color .25s var(--ease);
+}
+.theme-toggle:hover{ color:var(--text);background:var(--accent-soft) }
+.theme-toggle svg{ width:18px;height:18px }
+[data-theme="dark"] .theme-toggle .icon-sun{ display:block }
+[data-theme="dark"] .theme-toggle .icon-moon{ display:none }
+.icon-sun{ display:none }
+.icon-moon{ display:block }
 </style>
 </head>
 <body>
@@ -506,6 +556,10 @@ section{position:relative}
     </a>
     <nav class="nav" aria-label="主导航">
       <a href="#author">作者</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="切换深色模式" type="button">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
       <a class="cta" href="#download">下载</a>
     </nav>
   </div>
@@ -940,6 +994,30 @@ section{position:relative}
         ta.select();
         try{ document.execCommand('copy'); done(); }catch(_){}
         document.body.removeChild(ta);
+      }
+    });
+  }
+
+  // ============ 深色模式切换 ============
+  var themeToggle = document.getElementById('themeToggle');
+  var root = document.documentElement;
+  var metaTheme = document.querySelector('meta[name="theme-color"]');
+  var stored = localStorage.getItem('wf-theme');
+  if(stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme:dark)').matches)){
+    root.setAttribute('data-theme','dark');
+    if(metaTheme) metaTheme.content = '#0c0d11';
+  }
+  if(themeToggle){
+    themeToggle.addEventListener('click', function(){
+      var isDark = root.getAttribute('data-theme') === 'dark';
+      if(isDark){
+        root.removeAttribute('data-theme');
+        localStorage.setItem('wf-theme','light');
+        if(metaTheme) metaTheme.content = '#ffffff';
+      } else {
+        root.setAttribute('data-theme','dark');
+        localStorage.setItem('wf-theme','dark');
+        if(metaTheme) metaTheme.content = '#0c0d11';
       }
     });
   }
