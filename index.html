@@ -90,11 +90,10 @@ img{max-width:100%;display:block}
   font-weight:600;font-size:18px;letter-spacing:.02em;
   display:inline-flex;align-items:center;gap:10px;
 }
-.brand .dot{
-  width:8px;height:8px;border-radius:50%;
-  background:var(--accent);
-  box-shadow:0 0 0 4px var(--accent-soft);
-}
+.brand-logo{ height:28px; width:auto; display:block }
+.logo-light{ display:none }
+[data-theme="dark"] .brand-logo.logo-dark{ display:none }
+[data-theme="dark"] .brand-logo.logo-light{ display:block }
 .nav{display:flex;align-items:center;gap:8px}
 .nav a{
   position:relative;padding:8px 14px;font-size:14.5px;color:var(--text-2);
@@ -551,8 +550,8 @@ section{position:relative}
 <header class="topbar" role="banner">
   <div class="wrap">
     <a class="brand" href="#top" aria-label="Wallflip 首页">
-      <span class="dot" aria-hidden="true"></span>
-      <span>Wallflip</span>
+      <img class="brand-logo logo-dark" src="assets/logo.png" alt="" aria-hidden="true">
+      <img class="brand-logo logo-light" src="assets/logo-dark.png" alt="" aria-hidden="true">
     </a>
     <nav class="nav" aria-label="主导航">
       <a href="#author">作者</a>
