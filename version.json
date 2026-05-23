@@ -1,6 +1,14 @@
-{
-  "versionCode": 5,
-  "versionName": "0.4.1-beta",
-  "downloadUrl": "https://1859453750.share.123865.com/123pan/sihtvd-yeFKA",
-  "changelog": "修复平板切换横竖屏下的壁纸状态不一致"
-}
+  {
+    "versionCode": 5,
+    "versionName": "0.4.1-beta",
+    "downloadUrl": "https://1859453750.share.123865.com/123pan/sihtvd-yeFKA",
+    "changelog": "修复平板切换横竖屏下的壁纸状态不一致",
+    "changelogSections": [
+      {
+        "title": "修复",
+        "content": [
+          "修复平板切换横竖屏下的壁纸状态不一致"
+        ]
+      }
+    ]
+  }
