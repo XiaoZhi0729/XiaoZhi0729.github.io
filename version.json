@@ -1,6 +1,13 @@
 {
-  "versionCode": 4,
+  "versionCode": 6,
   "versionName": "0.4.1-beta",
-  "downloadUrl": "https://gitee.com/XiaoZhi114514/WallFlip/raw/master/apk/WallFlip-beta-0.4.1.apk",
-  "changelog": "修复若干问题"
+  "downloadUrl": "https://cdn.jsdelivr.net/gh/XiaoZhi0729/XiaoZhi0729.github.io@main/apk/WallFlip-beta-0.4.1.apk",
+  "changelogSections": [
+    {
+      "title": "逻辑",
+      "content": [
+        "更新 软件版本更新可通过软件内部下载"
+      ]
+    }
+  ]
 }
