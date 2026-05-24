@@ -6,7 +6,9 @@
   "changelogSections": [
     {
       "title": "逻辑",
-      "content": "修复 平板横竖屏壁纸显示不一致问题"
+      "content": [
+        "修复 平板横竖屏壁纸显示不一致问题"
+      ]
     }
   ]
 }
