@@ -1,35 +1,38 @@
 {
-  "versionCode": 9,
-  "versionName": "0.9.0-beta",
-  "downloadUrl": "https://raw.githubusercontent.com/XiaoZhi0729/XiaoZhi0729.github.io/main/apk/WallFlip-0.9.0-beta.apk",
+  "versionCode": 10,
+  "versionName": "1.0.0",
+  "downloadUrl": "https://raw.githubusercontent.com/XiaoZhi0729/XiaoZhi0729.github.io/main/apk/WallFlip-1.0.0.apk",
   "changelogSections": [
     {
-      "title": "新增功能",
+      "title": "核心功能",
       "content": [
-        "应用内更新系统：支持检查更新、下载 APK、断点续传，适配 MIUI 安装器",
-        "日出日落触发模式：根据地理位置自动获取日出日落时间，智能切换壁纸",
-        "动态壁纸模式：支持将视频设置为动态壁纸",
-        "平板横屏适配：修复横屏模式下壁纸裁切问题，优化大屏展示效果",
-        "云更新日志：关于页面可直接查看当前版本更新日志，新版本发布时自动展示"
+        "三种触发模式：固定时间、系统深浅色跟随、日出日落自动切换",
+        "动态壁纸：支持视频、Live Photo（实况照片），内置 RIFE 帧插值平滑播放",
+        "双裁切编辑器：锁屏与桌面壁纸独立裁切，支持跨模式绑定同步",
+        "多时段规则：可创建任意数量的换壁纸规则（如早/午/晚/夜各一套）"
       ]
     },
     {
-      "title": "Bug 修复",
+      "title": "视觉体验",
       "content": [
-        "共享元素动画偏移",
-        "全面屏手势线适配",
-        "导航重建卡顿/竞态",
-        "t0/t1 级严重 Bug",
-        "横屏裁切"
+        "顶栏渐进模糊（液态玻璃风格，基于 kyant backdrop）",
+        "共享元素转场动画（壁纸卡片无缝展开/收起）",
+        "MIUIX 设计语言全套组件，平滑 G2 圆角"
       ]
     },
     {
-      "title": "优化改进",
+      "title": "系统适配",
       "content": [
-        "规则编辑器+毛玻璃顶栏重做",
-        "关于页重构",
-        "语言包精简",
-        "构建配置更新"
+        "全面屏手势适配（MIUI / ColorOS 提示线透明）",
+        "平板横屏壁纸裁切适配",
+        "Android 13+ 锁屏与桌面壁纸独立设置"
+      ]
+    },
+    {
+      "title": "其他",
+      "content": [
+        "应用内检查更新，断点续传下载安装",
+        "冷启动首页规则加载优化，消除空状态闪现"
       ]
     }
   ]
